@@ -1,0 +1,50 @@
+<div class="game">
+    <div id="results" *ngIf="diceValue > 0 && diceValue == oldDiceValue">
+        You rolled a <span>{{diceValue}}</span> again
+    </div>
+    <div id="results" *ngIf="diceValue > 0 && diceValue != oldDiceValue">
+        You rolled a <span>{{diceValue}}</span>
+    </div>
+    <div id="results" *ngIf="diceValue == 0">
+        Pulsa <span>roll dice</span> para lanzar el dado
+    </div>
+
+    <div class="container">
+        <div id='dice' #dice class="dice">
+            <div id="dice-one-side-one" class='side one'>
+                <div class="dot red-dot one-1"></div>
+            </div>
+            <div id="dice-one-side-two" class='side two'>
+                <div class="dot red-dot two-1"></div>
+                <div class="dot red-dot two-2"></div>
+            </div>
+            <div id="dice-one-side-three" class='side three'>
+                <div class="dot red-dot three-1"></div>
+                <div class="dot red-dot three-2"></div>
+                <div class="dot red-dot three-3"></div>
+            </div>
+            <div id="dice-one-side-four" class='side four'>
+                <div class="dot red-dot four-1"></div>
+                <div class="dot red-dot four-2"></div>
+                <div class="dot red-dot four-3"></div>
+                <div class="dot red-dot four-4"></div>
+            </div>
+            <div id="dice-one-side-five" class='side five'>
+                <div class="dot red-dot five-1"></div>
+                <div class="dot red-dot five-2"></div>
+                <div class="dot red-dot five-3"></div>
+                <div class="dot red-dot five-4"></div>
+                <div class="dot red-dot five-5"></div>
+            </div>
+            <div id="dice-one-side-six" class='side six'>
+                <div class="dot red-dot six-1"></div>
+                <div class="dot red-dot six-2"></div>
+                <div class="dot red-dot six-3"></div>
+                <div class="dot red-dot six-4"></div>
+                <div class="dot red-dot six-5"></div>
+                <div class="dot red-dot six-6"></div>
+            </div>
+        </div>
+    </div>
+    <button mat-stroked-button [disabled]="disableDice" (click)="rollDice()">Roll dice</button>
+</div>
