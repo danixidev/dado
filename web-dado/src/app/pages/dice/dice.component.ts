@@ -52,10 +52,10 @@ export class DiceComponent {
 
   public exportData() {
     if (this.diceHistoric.length === 0) {
-      this.snackBar.open('No hay datos para exportar')
+      this.snackBar.open('No hay datos para copiar')
       return;
     }
     this.clipboard.copy(JSON.stringify(this.diceHistoric));
-    this.snackBar.open('Datos exportados correctamente', undefined, { duration: 2000 })
+    this.snackBar.open('Datos copiados correctamente', undefined, { duration: 2000 })
   }
 }

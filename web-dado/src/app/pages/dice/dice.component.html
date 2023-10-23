@@ -1,15 +1,15 @@
 <div class="game">
     <div id="results" *ngIf="disableDice">
-        Rolling dice
+        Lanzando dado
     </div>
     <div id="results" *ngIf="!disableDice && shownDiceValue > 0 && shownDiceValue == oldDiceValue">
-        You rolled a <span>{{shownDiceValue}}</span> again
+        Ha salido un <span>{{shownDiceValue}}</span> otra vez
     </div>
     <div id="results" *ngIf="!disableDice && shownDiceValue > 0 && shownDiceValue != oldDiceValue">
-        You rolled a <span>{{shownDiceValue}}</span>
+        Ha salido un <span>{{shownDiceValue}}</span>
     </div>
     <div id="results" *ngIf="!disableDice && shownDiceValue == 0">
-        Pulsa <span>roll dice</span> para lanzar el dado
+        Pulsa <span>lanzar dado</span> para empezar
     </div>
 
     <div class="container">
@@ -50,7 +50,7 @@
         </div>
     </div>
     <div id="buttons-container">
-        <button mat-stroked-button [disabled]="disableDice" (click)="rollDice()">Roll dice</button>
-        <button mat-button (click)="exportData()">Copy data</button>
+        <button mat-stroked-button [disabled]="disableDice" (click)="rollDice()">Lanzar dado</button>
+        <button mat-button (click)="exportData()">Copiar datos</button>
     </div>
 </div>
