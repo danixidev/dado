@@ -14,6 +14,7 @@ export class DiceComponent {
   public shownDiceValue: number = 0;
   public oldDiceValue: number = -1;
 
+  private diceThrow: number = 0
   private diceHistoric: Array<number> = [];
 
   constructor(
@@ -22,7 +23,13 @@ export class DiceComponent {
   ) { }
 
   public rollDice(): void {
-    let diceValue = Math.floor((Math.random() * 6) + 1);
+    let diceValue: number = 0
+    if (localStorage.getItem('useSequence') === 'true') {
+      diceValue = JSON.parse(localStorage.getItem('data') || '[]')[this.diceThrow]
+      this.diceThrow++
+    } else {
+      diceValue = Math.floor((Math.random() * 6) + 1);
+    }
 
     for (var i = 1; i <= 6; i++) {
       this.dice.nativeElement.classList.remove('show-' + i);
@@ -49,6 +56,6 @@ export class DiceComponent {
       return;
     }
     this.clipboard.copy(JSON.stringify(this.diceHistoric));
-    this.snackBar.open('Datos exportados correctamente')
+    this.snackBar.open('Datos exportados correctamente', undefined, { duration: 2000 })
   }
 }

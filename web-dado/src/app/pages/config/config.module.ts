@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { AngularMaterialsModule } from 'src/app/shared/angular-materials.module';
 import { ConfigComponent } from './config.component';
 import { ConfigRoutingModule } from './config-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -9,7 +10,8 @@ import { ConfigRoutingModule } from './config-routing.module';
     ],
     imports: [
         AngularMaterialsModule,
-        ConfigRoutingModule
+        ConfigRoutingModule,
+        FormsModule
     ],
     exports: [
         ConfigComponent
