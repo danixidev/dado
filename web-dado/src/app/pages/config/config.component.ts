@@ -40,7 +40,9 @@ export class ConfigComponent implements OnInit {
   }
 
   public resetData(): void {
-    localStorage.removeItem('data');
-    this.data = '';
+    if (confirm("¿Está seguro de que desea borrar la secuencia guardada?")) {
+      localStorage.removeItem('data');
+      this.data = '';
+    }
   }
 }

@@ -1,4 +1,13 @@
 #config-container {
     display: flex;
     flex-direction: column;
+    margin-top: 3rem;
+}
+
+mat-slide-toggle {
+    margin-bottom: 2rem;
+}
+
+#reset-data {
+    margin-top: 4rem;
 }
