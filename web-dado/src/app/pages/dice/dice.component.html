@@ -49,8 +49,14 @@
             </div>
         </div>
     </div>
+
+    <div id="points">Puntos:<span>{{points}}</span></div>
+    <div class="info" *ngIf="!disableDice && shownDiceValue == 1">Como ha salido un <span>1</span> pierdes tus puntos y
+        el turno.</div>
+
     <div id="buttons-container">
         <button mat-stroked-button [disabled]="disableDice" (click)="rollDice()">Lanzar dado</button>
-        <button mat-button (click)="exportData()">Copiar datos</button>
+        <button mat-stroked-button [disabled]="disableDice" (click)="changeTurn()">Pasar turno</button>
     </div>
+    <button mat-button (click)="exportData()">Copiar datos</button>
 </div>

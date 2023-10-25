@@ -21,6 +21,28 @@
      }
  }
 
+ #points {
+     font-size: 1.2rem;
+     line-height: 2rem;
+     font-weight: 300;
+
+     span {
+         margin-left: 4px;
+         font-weight: 400;
+         vertical-align: middle;
+     }
+ }
+
+ .info {
+     margin-top: 1rem;
+     font-size: 1rem;
+     font-weight: 300;
+
+     span {
+         font-weight: 400;
+     }
+ }
+
  .container {
      display: flex;
      flex-direction: row;
@@ -30,8 +52,13 @@
  #buttons-container {
      margin: 2.5rem;
      display: flex;
-     flex-direction: column;
+     flex-direction: row;
      align-items: center;
+
+     button {
+         margin: 0 1rem 0 1rem;
+         //  width: 150px;
+     }
  }
 
  button {

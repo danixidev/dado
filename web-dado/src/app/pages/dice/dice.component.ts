@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -7,7 +7,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './dice.component.html',
   styleUrls: ['./dice.component.scss']
 })
-export class DiceComponent {
+export class DiceComponent implements OnInit {
+
+  private sequence: Array<number> = []
 
   @ViewChild('dice', { static: false }) dice: any;
   public disableDice: boolean = false;
@@ -17,16 +19,23 @@ export class DiceComponent {
   private diceThrow: number = 0
   private diceHistoric: Array<number> = [];
 
+  public points: number = 0;
+  public previousPoints: number = 0;
+
   constructor(
     private clipboard: Clipboard,
     private snackBar: MatSnackBar
   ) { }
 
+  ngOnInit(): void {
+    this.sequence = JSON.parse(localStorage.getItem('data') || '[]')
+  }
+
   public rollDice(): void {
     let diceValue: number = 0
     if (localStorage.getItem('useSequence') === 'true') {
-      diceValue = JSON.parse(localStorage.getItem('data') || '[]')[this.diceThrow]
-      this.diceThrow++
+      if (diceValue = this.sequence[this.diceThrow]) this.diceThrow++
+      else return
     } else {
       diceValue = Math.floor((Math.random() * 6) + 1);
     }
@@ -45,10 +54,18 @@ export class DiceComponent {
       this.shownDiceValue = diceValue;
       this.diceHistoric.push(diceValue);
 
+      if (this.shownDiceValue != 1) this.points += this.shownDiceValue
+      else this.points = 0
+
       this.disableDice = false;
     }, 1000);
   }
 
+
+  public changeTurn(): void {
+    this.previousPoints = this.points
+    this.snackBar.open('Turno pasado', undefined, { duration: 2000 })
+  }
 
   public exportData() {
     if (this.diceHistoric.length === 0) {
