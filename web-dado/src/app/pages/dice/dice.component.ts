@@ -55,7 +55,7 @@ export class DiceComponent implements OnInit {
       this.diceHistoric.push(diceValue);
 
       if (this.shownDiceValue != 1) this.points += this.shownDiceValue
-      else this.points = 0
+      else this.points = this.previousPoints
 
       this.disableDice = false;
     }, 1000);
