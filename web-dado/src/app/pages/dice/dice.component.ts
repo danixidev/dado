@@ -65,6 +65,7 @@ export class DiceComponent implements OnInit {
   public changeTurn(): void {
     this.previousPoints = this.points
     this.snackBar.open('Turno pasado', undefined, { duration: 2000 })
+    this.diceHistoric.push(0)
   }
 
   public exportData() {
